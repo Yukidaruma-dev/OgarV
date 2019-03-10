@@ -6,6 +6,7 @@
 * Deleted some codes;
 * Added Shell Scripts and Batch file
 
+-------------
 ####1.2.0 @ 2019-02-17:
 * Fix crash when leaving world;
 * Fix crash when spectating a player that gets destroyed;
