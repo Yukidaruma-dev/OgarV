@@ -27,7 +27,7 @@ Your friendly agar.io private server recreation.
     - If you're on Windows, `npm install -g windows-build-tools`.
     - If you're on GNU/Linux, use your package manager to install a supported C++ compiler such as GCC.
 
-3. Clone / [download](https://github.com/Yukidaruma-dev/OgarV/archive/master.zip) the repo.
+3. Clone / [download](https://github.com/Yukidaruma-dev/OgarV/releases/download/1.3.0/OgarV_v1.3.0.zip) the repo.
 
 4. `npm install` in `/`.
 
