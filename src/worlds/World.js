@@ -262,7 +262,8 @@ class World {
         this.handle.gamemode.onWorldTick(this);
 
         const self = this;
-        const eat = [], rigid = [];
+        const eat = [],
+            rigid = [];
         let i, l;
 
         for (i = 0, l = this.cells.length; i < l; i++)
@@ -292,9 +293,15 @@ class World {
             this.finder.search(cell.range, /** @param {Cell} other */ (other) => {
                 if (cell.id === other.id) return;
                 switch (cell.getEatResult(other)) {
-                    case 1: rigid.push(cell, other); break;
-                    case 2: eat.push(cell, other); break;
-                    case 3: eat.push(other, cell); break;
+                    case 1:
+                        rigid.push(cell, other);
+                        break;
+                    case 2:
+                        eat.push(cell, other);
+                        break;
+                    case 3:
+                        eat.push(other, cell);
+                        break;
                 }
             });
         }
@@ -313,9 +320,15 @@ class World {
             this.finder.search(cell.range, /** @param {Cell} other */ (other) => {
                 if (cell.id === other.id) return;
                 switch (cell.getEatResult(other)) {
-                    case 1: rigid.push(cell, other); break;
-                    case 2: eat.push(cell, other); break;
-                    case 3: eat.push(other, cell); break;
+                    case 1:
+                        rigid.push(cell, other);
+                        break;
+                    case 2:
+                        eat.push(cell, other);
+                        break;
+                    case 3:
+                        eat.push(other, cell);
+                        break;
                 }
             });
         }
@@ -328,7 +341,8 @@ class World {
         for (i = 0, l = this.players.length; i < l; i++) {
             const player = this.players[i];
             player.checkDisconnect();
-            if (!player.exists) { i--; l--; continue; }
+            if (!player.exists) { i--;
+                l--; continue; }
             const router = player.router;
             while (router.splitAttempts > 0) {
                 router.attemptSplit();
@@ -377,7 +391,9 @@ class World {
         let d = Math.sqrt(dx * dx + dy * dy);
         if (d <= 0) return;
         const m = a.size + b.size - d;
-        if (m <= 0) return; dx /= d; dy /= d;
+        if (m <= 0) return;
+        dx /= d;
+        dy /= d;
         const M = a.squareSize + b.squareSize;
         const aM = b.squareSize / M;
         const bM = a.squareSize / M;
@@ -423,7 +439,7 @@ class World {
     /**
      * @param {Cell} cell
      * @param {boolean=} bounce
-    */
+     */
     bounceCell(cell, bounce) {
         const r = cell.size / 2;
         const b = this.border;
@@ -462,7 +478,9 @@ class World {
         let dx = router.mouseX - cell.x;
         let dy = router.mouseY - cell.y;
         const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 1) return; dx /= d; dy /= d;
+        if (d < 1) return;
+        dx /= d;
+        dy /= d;
         const m = Math.min(cell.moveSpeed, d) * this.handle.stepMult;
         cell.x += dx * m;
         cell.y += dy * m;
@@ -588,7 +606,8 @@ class World {
             return new Array(amount).fill(perPiece);
         }
         if (cellMass / cellsLeft < splitMin) {
-            let amount = 2, perPiece = NaN;
+            let amount = 2,
+                perPiece = NaN;
             while ((perPiece = cellMass / (amount + 1)) >= splitMin && amount * 2 <= cellsLeft)
                 amount *= 2;
             return new Array(amount).fill(perPiece);
@@ -609,7 +628,10 @@ class World {
     }
 
     compileStatistics() {
-        let internal = 0, external = 0, playing = 0, spectating = 0;
+        let internal = 0,
+            external = 0,
+            playing = 0,
+            spectating = 0;
         for (let i = 0, l = this.players.length; i < l; i++) {
             const player = this.players[i];
             if (!player.router.isExternal) { internal++; continue; }

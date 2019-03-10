@@ -24,7 +24,8 @@ function padLeft(str, pad, len) {
  */
 function table(contents, eol) {
     const columnSizes = [];
-    let all = "", i, j, rowText, row, col, size;
+    let all = "",
+        i, j, rowText, row, col, size;
     for (i = 0; i < contents.columns.length; i++) {
         col = contents.columns[i];
         size = col.text.length;
@@ -56,7 +57,8 @@ function table(contents, eol) {
  * @param {SettingIdType} id
  */
 function splitSettingId(id) {
-    let items = [], reg, i = 0;
+    let items = [],
+        reg, i = 0;
     while ((reg = /([a-z]+)|([A-Z][a-z]+)|([A-Z])/.exec(id)) != null && ++i < 10) {
         const capture = reg[1] || reg[2] || reg[3];
         items.push(capture.toLowerCase()), id = id.replace(capture, "");
@@ -76,7 +78,8 @@ function getSplitSettingHits(a, b) {
 
 /** @param {number} value */
 function prettyMemory(value) {
-    const units = ["B", "kiB", "MiB", "GiB", "TiB"]; let i = 0;
+    const units = ["B", "kiB", "MiB", "GiB", "TiB"];
+    let i = 0;
     for (; i < units.length && value / 1024 > 1; i++)
         value /= 1024;
     return `${value.toFixed(1)} ${units[i]}`;
@@ -134,9 +137,9 @@ module.exports = (commands, chatCommands) => {
                 const keys = Object.keys(list).sort();
                 handle.logger.print(table({
                     columns: [
-                        { text: "NAME",        headPad: " ", emptyPad: " ", rowPad: " ", separated: false },
-                        { text: "ARGUMENTS",   headPad: " ", emptyPad: " ", rowPad: " ", separated: false },
-                        { text: "DESCRIPTION", headPad: " ", emptyPad: " ", rowPad: " ", separated: true  }
+                        { text: "NAME", headPad: " ", emptyPad: " ", rowPad: " ", separated: false },
+                        { text: "ARGUMENTS", headPad: " ", emptyPad: " ", rowPad: " ", separated: false },
+                        { text: "DESCRIPTION", headPad: " ", emptyPad: " ", rowPad: " ", separated: true }
                     ],
                     rows: keys.map(v => {
                         return [
@@ -160,13 +163,13 @@ module.exports = (commands, chatCommands) => {
                     .filter(v => matchingType === null || v.type == matchingType);
                 handle.logger.print(table({
                     columns: [
-                        { text: "INDEX",    headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "TYPE",     headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "SOURCE",   headPad: " ", emptyPad: "/", rowPad: " ", separated: true  },
-                        { text: "ACTIVE",   headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "DORMANT",  headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "INDEX", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "TYPE", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "SOURCE", headPad: " ", emptyPad: "/", rowPad: " ", separated: true },
+                        { text: "ACTIVE", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "DORMANT", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
                         { text: "PROTOCOL", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "PID",      headPad: " ", emptyPad: "/", rowPad: " ", separated: false }
+                        { text: "PID", headPad: " ", emptyPad: "/", rowPad: " ", separated: false }
                     ],
                     rows: routers.map((v, i) => [
                         i.toString(),
@@ -195,12 +198,12 @@ module.exports = (commands, chatCommands) => {
                     .filter(v => worldId == null || (v.hasWorld && v.world.id === worldId));
                 handle.logger.print(table({
                     columns: [
-                        { text: "ID",        headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "WORLD",     headPad: " ", emptyPad: "/", rowPad: " ", separated: true  },
+                        { text: "ID", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "WORLD", headPad: " ", emptyPad: "/", rowPad: " ", separated: true },
                         { text: "FOLLOWING", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "STATE",     headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "SCORE",     headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
-                        { text: "NAME",      headPad: " ", emptyPad: "/", rowPad: " ", separated: false }
+                        { text: "STATE", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "SCORE", headPad: " ", emptyPad: "/", rowPad: " ", separated: false },
+                        { text: "NAME", headPad: " ", emptyPad: "/", rowPad: " ", separated: false }
                     ],
                     rows: players.map((v) => {
                         let ret = [
@@ -212,14 +215,20 @@ module.exports = (commands, chatCommands) => {
                         else ret.push(null);
 
                         switch (v.state) {
-                            case -1: ret.push("idle"); break;
+                            case -1:
+                                ret.push("idle");
+                                break;
                             case 0:
                                 ret.push("alive");
                                 ret.push(Math.round(v.score).toString());
                                 ret.push(v.ownedCells[0].name);
                                 break;
-                            case 1: ret.push("spec"); break;
-                            case 2: ret.push("roam"); break;
+                            case 1:
+                                ret.push("spec");
+                                break;
+                            case 2:
+                                ret.push("roam");
+                                break;
                         }
                         return ret;
                     })
@@ -252,7 +261,7 @@ module.exports = (commands, chatCommands) => {
                 }
                 if (args.length >= 2) {
                     const settingValue = eval(args.slice(1).join(" "));
-                    const newSettings = Object.assign({ }, handle.settings, {
+                    const newSettings = Object.assign({}, handle.settings, {
                         settingName: settingValue
                     });
                     handle.setSettings(newSettings);
@@ -292,8 +301,7 @@ module.exports = (commands, chatCommands) => {
             exec: (handle, context, args) => {
                 handle.logger.print(
                     (function() {
-                        try { return eval(args.join(" ")); }
-                        catch (e) { return !e ? e : (e.toString() || e); }
+                        try { return eval(args.join(" ")); } catch (e) { return !e ? e : (e.toString() || e); }
                     }).bind(handle)()
                 );
             }
@@ -321,9 +329,10 @@ module.exports = (commands, chatCommands) => {
                     const internal = handle.listener.routers.length - external;
                     logger.print(`routers: ${Object.keys(handle.players).length} players, ${external} external, ${internal} internal`);
                     for (let id in handle.worlds) {
-                        const world = handle.worlds[id], stats = world.stats,
-                            cells = [ world.cells.length, world.playerCells.length, world.pelletCount, world.virusCount, world.ejectedCells.length, world.mothercellCount],
-                            statsF = [ stats.external, stats.internal, stats.limit, stats.playing, stats.spectating ];
+                        const world = handle.worlds[id],
+                            stats = world.stats,
+                            cells = [world.cells.length, world.playerCells.length, world.pelletCount, world.virusCount, world.ejectedCells.length, world.mothercellCount],
+                            statsF = [stats.external, stats.internal, stats.limit, stats.playing, stats.spectating];
                         logger.print(`world ${id}: ${cells[0]} cells - ${cells[1]}P/${cells[2]}p/${cells[3]}v/${cells[4]}e/${cells[5]}m`);
                         logger.print(`         ${statsF[0]} / ${statsF[1]} / ${statsF[2]} players - ${statsF[3]}p/${statsF[4]}s`);
                     }
@@ -531,7 +540,9 @@ module.exports = (commands, chatCommands) => {
                 for (let i = 0, l = world.players.length; i < l && realCount < count; i++) {
                     if (!(world.players[i].router instanceof PlayerBot)) continue;
                     world.players[i].router.close();
-                    realCount++; i--; l--;
+                    realCount++;
+                    i--;
+                    l--;
                 }
                 handle.logger.print(`removed ${realCount} player bots from world`);
             }

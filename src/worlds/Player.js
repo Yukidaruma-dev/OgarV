@@ -30,9 +30,9 @@ class Player {
         /** @type {PlayerCell[]} */
         this.ownedCells = [];
         /** @type {{[cellId: string]: Cell}} */
-        this.visibleCells = { };
+        this.visibleCells = {};
         /** @type {{[cellId: string]: Cell}} */
-        this.lastVisibleCells = { };
+        this.lastVisibleCells = {};
         /** @type {ViewArea} */
         this.viewArea = {
             x: 0,
@@ -67,9 +67,14 @@ class Player {
         this.updateState(this.state);
         let s;
         switch (this.state) {
-            case -1: this.score = NaN; break;
+            case -1:
+                this.score = NaN;
+                break;
             case 0:
-                let x = 0, y = 0, score = 0; s = 0;
+                let x = 0,
+                    y = 0,
+                    score = 0;
+                s = 0;
                 const l = this.ownedCells.length;
                 for (let i = 0; i < l; i++) {
                     const cell = this.ownedCells[i];
@@ -100,7 +105,9 @@ class Player {
                 let dy = this.router.mouseY - this.viewArea.y;
                 const d = Math.sqrt(dx * dx + dy * dy);
                 const D = Math.min(d, this.settings.playerRoamSpeed);
-                if (D < 1) break; dx /= d; dy /= d;
+                if (D < 1) break;
+                dx /= d;
+                dy /= d;
                 const border = this.world.border;
                 this.viewArea.x = Math.max(border.x - border.w, Math.min(this.viewArea.x + dx * D, border.x + border.w));
                 this.viewArea.y = Math.max(border.y - border.h, Math.min(this.viewArea.y + dy * D, border.y + border.h));
@@ -115,7 +122,7 @@ class Player {
         if (this.world === null) return;
         delete this.lastVisibleCells;
         this.lastVisibleCells = this.visibleCells;
-        let visibleCells = this.visibleCells = { };
+        let visibleCells = this.visibleCells = {};
         for (let i = 0, l = this.ownedCells.length; i < l; i++) {
             const cell = this.ownedCells[i];
             visibleCells[cell.id] = cell;

@@ -89,8 +89,7 @@ class Connection extends Router {
         if (message.length >= 2 && message[0] === "/") {
             if (!this.handle.chatCommands.execute(this, message.slice(1)))
                 globalChat.directMessage(null, this, "unknown command, execute /help for the list of commands");
-        }
-        else message && globalChat.broadcast(this, message);
+        } else message && globalChat.broadcast(this, message);
     }
     onQPress() {
         if (!this.hasPlayer) return;
@@ -116,10 +115,13 @@ class Connection extends Router {
         }
         this.player.updateVisibleCells();
 
-        const add = [], upd = [], eat = [], del = [];
+        const add = [],
+            upd = [],
+            eat = [],
+            del = [];
         const player = this.player;
-        const     visible = player.visibleCells,
-              lastVisible = player.lastVisibleCells;
+        const visible = player.visibleCells,
+            lastVisible = player.lastVisibleCells;
         for (let id in visible) {
             const cell = visible[id];
             if (!lastVisible.hasOwnProperty(id)) add.push(cell);

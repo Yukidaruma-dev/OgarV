@@ -52,9 +52,9 @@ class ServerHandle {
         this.listener = new Listener(this);
         this.matchmaker = new Matchmaker(this);
         /** @type {Identified<World>} */
-        this.worlds = { };
+        this.worlds = {};
         /** @type {Identified<Player>} */
-        this.players = { };
+        this.players = {};
 
         DefaultCommands(this.commands, this.chatCommands);
         this.protocols.register(ModernProtocol, LegacyProtocol);
@@ -68,7 +68,7 @@ class ServerHandle {
      * @param {Settings} settings
      */
     setSettings(settings) {
-        this.settings = Object.assign({ }, Settings, settings);
+        this.settings = Object.assign({}, Settings, settings);
         this.tickDelay = 1000 / this.settings.serverFrequency;
         this.ticker.step = this.tickDelay;
         this.stepMult = this.tickDelay / 40;
@@ -88,7 +88,7 @@ class ServerHandle {
         this.gamemode.onHandleStart();
 
         this.logger.inform("ticker begin");
-        this.logger.inform(`\x1B[1m\x1B[32mOgarII\x1B[0m\x1B[32m ${this.version}\x1B[0m`);
+        this.logger.inform(`\x1B[1m\x1B[32mOgarV\x1B[0m\x1B[32m ${this.version}\x1B[0m`);
         return true;
     }
 
@@ -116,7 +116,7 @@ class ServerHandle {
     /** @returns {World} */
     createWorld() {
         let id = 0;
-        while (this.worlds.hasOwnProperty(++id)) ;
+        while (this.worlds.hasOwnProperty(++id));
         const newWorld = new World(this, id);
         this.worlds[id] = newWorld;
         this.gamemode.onNewWorld(newWorld);
@@ -144,7 +144,7 @@ class ServerHandle {
      */
     createPlayer(router) {
         let id = 0;
-        while (this.players.hasOwnProperty(++id)) ;
+        while (this.players.hasOwnProperty(++id));
         const newPlayer = new Player(this, id, router);
         this.players[id] = newPlayer;
         router.player = newPlayer;

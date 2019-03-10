@@ -7,12 +7,18 @@ module.exports = {
      */
     randomColor() {
         switch (~~(Math.random() * 6)) {
-            case 0: return { r: ~~(Math.random() * 0x100), g: 0x10, b: 0xFF };
-            case 1: return { r: ~~(Math.random() * 0x100), g: 0xFF, b: 0x10 };
-            case 2: return { r: 0x10, g: 0xFF, b: ~~(Math.random() * 0x100) };
-            case 3: return { r: 0x10, g: ~~(Math.random() * 0x100), b: 0xFF };
-            case 4: return { r: 0xFF, g: ~~(Math.random() * 0x100), b: 0x10 };
-            case 5: return { r: 0xFF, g: 0x10, b: ~~(Math.random() * 0x100) };
+            case 0:
+                return { r: ~~(Math.random() * 0x100), g: 0x10, b: 0xFF };
+            case 1:
+                return { r: ~~(Math.random() * 0x100), g: 0xFF, b: 0x10 };
+            case 2:
+                return { r: 0x10, g: 0xFF, b: ~~(Math.random() * 0x100) };
+            case 3:
+                return { r: 0x10, g: ~~(Math.random() * 0x100), b: 0xFF };
+            case 4:
+                return { r: 0xFF, g: ~~(Math.random() * 0x100), b: 0x10 };
+            case 5:
+                return { r: 0xFF, g: 0x10, b: ~~(Math.random() * 0x100) };
         }
     },
     /**
@@ -48,9 +54,9 @@ module.exports = {
      */
     fullyIntersects(a, b) {
         return a.x - a.w >= b.x + b.w &&
-               a.x + a.w <= b.x - b.w &&
-               a.y - a.h >= b.y + b.h &&
-               a.y + a.h <= b.y - b.h;
+            a.x + a.w <= b.x - b.w &&
+            a.y - a.h >= b.y + b.h &&
+            a.y + a.h <= b.y - b.h;
     },
     /**
      * @param {Range} a
@@ -79,5 +85,5 @@ module.exports = {
         };
     },
 
-    version: "1.2.0"
+    version: "1.3.0"
 };

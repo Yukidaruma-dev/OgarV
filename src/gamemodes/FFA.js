@@ -15,8 +15,8 @@ class FFA extends Gamemode {
     onPlayerSpawnRequest(player, name) {
         if (player.state === 0 || !player.hasWorld) return;
         const size = player.router.type === "minion" ?
-             this.handle.settings.minionSpawnSize :
-             this.handle.settings.playerSpawnSize;
+            this.handle.settings.minionSpawnSize :
+            this.handle.settings.playerSpawnSize;
         const spawnInfo = player.world.getPlayerSpawn(size);
         player.world.spawnPlayer(player, spawnInfo.color || Misc.randomColor(), spawnInfo.pos, size, name, null);
     }

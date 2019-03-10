@@ -52,12 +52,14 @@ class Reader {
         this.offset += count;
     }
     readZTStringUCS2() {
-        let start = this.offset, index = this.offset;
+        let start = this.offset,
+            index = this.offset;
         while (index + 2 < this.length && this.readUInt16() !== 0) index += 2;
         return this.data.slice(start, index).toString("ucs2");
     }
     readZTStringUTF8() {
-        let start = this.offset, index = this.offset;
+        let start = this.offset,
+            index = this.offset;
         while (index + 1 < this.length && this.readUInt8() !== 0) index++;
         return this.data.slice(start, index).toString("utf-8");
     }

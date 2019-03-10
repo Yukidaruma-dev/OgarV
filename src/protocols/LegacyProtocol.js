@@ -72,7 +72,8 @@ class LegacyProtocol extends Protocol {
                         this.connection.mouseX = ~~reader.readFloat64();
                         this.connection.mouseY = ~~reader.readFloat64();
                         break;
-                    default: return void this.fail(1003, "Unexpected message format");
+                    default:
+                        return void this.fail(1003, "Unexpected message format");
                 }
                 break;
             case 17:
@@ -81,8 +82,12 @@ class LegacyProtocol extends Protocol {
                         this.connection.minions[i].splitAttempts++;
                 else this.connection.splitAttempts++;
                 break;
-            case 18: this.isPressingQ = true; break;
-            case 19: this.isPressingQ = this.hasProcessedQ = false; break;
+            case 18:
+                this.isPressingQ = true;
+                break;
+            case 19:
+                this.isPressingQ = this.hasProcessedQ = false;
+                break;
             case 21:
                 if (this.connection.controllingMinions)
                     for (let i = 0, l = this.connection.minions.length; i < l; i++)
@@ -118,8 +123,10 @@ class LegacyProtocol extends Protocol {
                 if (this.connection.hasPlayer && this.connection.player.hasWorld)
                     this.onStatsRequest();
                 break;
-            case 255: return void this.fail(1003, "Unexpected message");
-            default: return void this.fail(1003, "Unknown message type");
+            case 255:
+                return void this.fail(1003, "Unexpected message");
+            default:
+                return void this.fail(1003, "Unknown message type");
         }
     }
 
@@ -178,7 +185,7 @@ class LegacyProtocol extends Protocol {
         writer.writeFloat64(range.y + range.h);
         if (includeServerInfo) {
             writer.writeUInt32(this.handle.gamemode.type);
-            writeZTString(writer, `OgarII ${this.handle.version}`, this.protocol);
+            writeZTString(writer, `OgarV ${this.handle.version}`, this.protocol);
         }
         this.send(writer.finalize());
     }

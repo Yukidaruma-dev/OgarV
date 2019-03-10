@@ -67,7 +67,7 @@ class Cell {
     /** 
      * @abstract
      * @returns {boolean}
-    */
+     */
     get avoidWhenSpawning() { throw new Error("Must be overriden"); }
     /** @virtual */
     get shouldUpdate() {
@@ -79,13 +79,19 @@ class Cell {
     get x() { return this._x; }
     get y() { return this._y; }
     /** @param {number} value */
-    set x(value) { throwIfBadNumber(value); this._x = value; this.posChanged = true; }
+    set x(value) { throwIfBadNumber(value);
+        this._x = value;
+        this.posChanged = true; }
     /** @param {number} value */
-    set y(value) { throwIfBadNumber(value); this._y = value; this.posChanged = true; }
+    set y(value) { throwIfBadNumber(value);
+        this._y = value;
+        this.posChanged = true; }
 
     get size() { return this._size; }
     /** @param {number} value */
-    set size(value) { throwIfBadNumber(value); this._size = value; this.sizeChanged = true; }
+    set size(value) { throwIfBadNumber(value);
+        this._size = value;
+        this.sizeChanged = true; }
 
     get squareSize() { return this.size * this.size; }
     /** @param {number} value */
@@ -97,15 +103,18 @@ class Cell {
 
     get color() { return this._color; }
     /** @param {Color} value */
-    set color(value) { this._color = value; this.colorChanged = true; }
+    set color(value) { this._color = value;
+        this.colorChanged = true; }
 
     get name() { return this._name; }
     /** @param {string} value */
-    set name(value) { this._name = value; this.nameChanged = true; }
+    set name(value) { this._name = value;
+        this.nameChanged = true; }
 
     get skin() { return this._skin; }
     /** @param {string} value */
-    set skin(value) { this._skin = value; this.skinChanged = true; }
+    set skin(value) { this._skin = value;
+        this.skinChanged = true; }
 
     /**
      * @param {Cell} other
@@ -116,7 +125,7 @@ class Cell {
     }
 
     /** @virtual */
-    onSpawned() { }
+    onSpawned() {}
     /** @virtual */
     onTick() {
         this.posChanged =
@@ -135,7 +144,7 @@ class Cell {
         this.eatenBy = other;
     }
     /** @virtual */
-    onRemoved() { }
+    onRemoved() {}
 }
 
 module.exports = Cell;

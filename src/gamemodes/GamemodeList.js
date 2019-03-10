@@ -5,7 +5,7 @@ class GamemodeList {
     constructor(handle) {
         this.handle = handle;
         /** @type {Indexed<typeof Gamemode>} */
-        this.store = { };
+        this.store = {};
     }
 
     /**
@@ -26,7 +26,7 @@ class GamemodeList {
     setGamemode(name) {
         if (!this.store.hasOwnProperty(name))
             throw new Error("unknown gamemode");
-        this.handle.gamemode = new (this.store[name])(this.handle);
+        this.handle.gamemode = new(this.store[name])(this.handle);
     }
 }
 

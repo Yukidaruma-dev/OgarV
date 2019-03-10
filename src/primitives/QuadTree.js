@@ -4,7 +4,7 @@ const { intersects, fullyIntersects, getQuadIntersect, getQuadFullIntersect } = 
  * @typedef {{ __root: undefined, range: Range }} QuadItem
  * @typedef {{ __root: QuadTree, range: Range }} InsertedQuadItem
  * @typedef {-1 | 0 | 1 | 2 | 3} DefiniteQuad
-*/
+ */
 
 class QuadTree {
     /**
@@ -103,7 +103,9 @@ class QuadTree {
             if (quadrant === -1) continue;
             delete this.items[i].__root;
             this.branches[quadrant].insert(this.items[i]);
-            this.items.splice(i, 1); i--; l--;
+            this.items.splice(i, 1);
+            i--;
+            l--;
         }
     }
     /**

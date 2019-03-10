@@ -2,9 +2,9 @@ const Gamemode = require("./Gamemode");
 const Misc = require("../primitives/Misc");
 
 const highlightBase = 204,
-       lowlightBase = 51,
-      highlightDiff = 52,
-       lowlightDiff = 52;
+    lowlightBase = 51,
+    highlightDiff = 52,
+    lowlightDiff = 52;
 const teamColors = [
     { r: highlightBase, g: lowlightBase, b: lowlightBase },
     { r: lowlightBase, g: highlightBase, b: lowlightBase },
@@ -18,7 +18,7 @@ const teamCount = teamColors.length;
 function getTeamColor(index) {
     const random = Math.random();
     const highlight = highlightBase + ~~(random * highlightDiff);
-    const lowlight  =  lowlightBase - ~~(random * lowlightDiff);
+    const lowlight = lowlightBase - ~~(random * lowlightDiff);
     return {
         r: teamColors[index].r === highlightBase ? highlight : lowlight,
         g: teamColors[index].g === highlightBase ? highlight : lowlight,
@@ -39,7 +39,7 @@ class Teams extends Gamemode {
      * @param {World} world
      */
     onNewWorld(world) {
-        world.teams = { };
+        world.teams = {};
         for (let i = 0; i < teamCount; i++)
             world.teams[i] = [];
     }

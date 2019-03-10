@@ -19,7 +19,7 @@ class Listener {
         /** @type {Connection[]} */
         this.connections = [];
         /** @type {Counter<IPAddress>} */
-        this.connectionsByIP = { };
+        this.connectionsByIP = {};
     }
 
     get settings() { return this.handle.settings; }
@@ -124,7 +124,9 @@ class Listener {
         for (i = 0, l = this.routers.length; i < l; i++) {
             const router = this.routers[i];
             if (!router.shouldClose) continue;
-            router.close(); i--; l--;
+            router.close();
+            i--;
+            l--;
         }
         for (i = 0; i < l; i++) this.routers[i].update();
         for (i = 0, l = this.connections.length; i < l; i++) {

@@ -15,23 +15,23 @@ class Gamemode {
     get name() { return this.constructor.name; }
 
     /** @virtual */
-    onHandleStart() { }
+    onHandleStart() {}
     /** @virtual */
-    onHandleTick() { }
+    onHandleTick() {}
     /** @virtual */
-    onHandleStop() { }
+    onHandleStop() {}
 
     /** @param {World} world @virtual */
     canJoinWorld(world) { return !world.frozen; }
     /** @param {Player} player @param {World} world @virtual */
-    onPlayerJoinWorld(player, world) { }
+    onPlayerJoinWorld(player, world) {}
     /** @param {Player} player @param {World} world @virtual */
-    onPlayerLeaveWorld(player, world) { }
+    onPlayerLeaveWorld(player, world) {}
 
     /** @param {World} world @virtual */
-    onNewWorld(world) { }
+    onNewWorld(world) {}
     /** @param {World} world @virtual */
-    onWorldTick(world) { }
+    onWorldTick(world) {}
     /** @param {World} world @abstract */
     compileLeaderboard(world) {
         throw new Error("Must be overriden");
@@ -41,10 +41,10 @@ class Gamemode {
         throw new Error("Must be overriden");
     }
     /** @param {World} world @virtual */
-    onWorldDestroy(world) { }
+    onWorldDestroy(world) {}
 
     /** @param {Player} player @virtual */
-    onNewPlayer(player) { }
+    onNewPlayer(player) {}
     /** @param {Player} player @virtual */
     whenPlayerPressQ(player) {
         player.updateState(2);
@@ -64,16 +64,16 @@ class Gamemode {
         throw new Error("Must be overriden");
     }
     /** @param {Player} player @virtual */
-    onPlayerDestroy(player) { }
+    onPlayerDestroy(player) {}
 
     /** @param {Cell} cell @virtual */
-    onNewCell(cell) { }
+    onNewCell(cell) {}
     /** @param {Cell} a @param {Cell} b @virtual */
     canEat(a, b) { return true; }
     /** @param {PlayerCell} cell @virtual */
     getDecayMult(cell) { return cell.world.settings.playerDecayMult; }
     /** @param {Cell} cell @virtual */
-    onCellRemove(cell) { }
+    onCellRemove(cell) {}
 }
 
 module.exports = Gamemode;

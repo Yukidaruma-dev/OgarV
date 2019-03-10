@@ -1,4 +1,4 @@
-# OgarII
+# OgarV
 
 Your friendly agar.io private server recreation.
 
@@ -27,7 +27,7 @@ Your friendly agar.io private server recreation.
     - If you're on Windows, `npm install -g windows-build-tools`.
     - If you're on GNU/Linux, use your package manager to install a supported C++ compiler such as GCC.
 
-3. Clone / [download](https://github.com/Luka967/OgarII/archive/master.zip) the repo.
+3. Clone / [download](https://github.com/Yukidaruma-dev/OgarV/archive/master.zip) the repo.
 
 4. `npm install` in `/`.
 
@@ -37,9 +37,9 @@ Your friendly agar.io private server recreation.
 
 ## Configuring
 
-- After your first run, OgarII will drop two files in `cli/` / working directory: `log-settings.json` and `settings.json`.
+- After your first run, OgarV will drop two files in `cli/` / working directory: `log-settings.json` and `settings.json`.
 
-- To change how OgarII runs, modify `cli/settings.json`.
+- To change how OgarV runs, modify `cli/settings.json`.
 
 - To change what gets logged, modify `cli/log-settings.json`.
 

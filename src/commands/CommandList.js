@@ -11,7 +11,6 @@ class Command {
         this.args = args;
         this.executor = executor;
     }
-
     toString() {
         return `${this.name}${!this.args ? "" : " " + this.args} - ${this.description}`;
     }

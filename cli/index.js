@@ -6,8 +6,7 @@ const readline = require("readline");
 
 /** @returns {DefaultSettings} */
 function readSettings() {
-    try { return JSON.parse(fs.readFileSync("./settings.json", "utf-8")); }
-    catch (e) {
+    try { return JSON.parse(fs.readFileSync("./settings.json", "utf-8")); } catch (e) {
         console.log("caught error while parsing/reading settings.json:", e.stack);
         process.exit(1);
     }
@@ -42,6 +41,7 @@ commandStream.once("SIGINT", () => {
     currentHandle.stop();
     process.exitCode = 0;
 });
+
 function ask() {
     if (commandStreamClosing) return;
     commandStream.question("@ ", (input) => {

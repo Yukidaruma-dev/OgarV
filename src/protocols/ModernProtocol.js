@@ -83,7 +83,8 @@ class ModernProtocol extends Protocol {
                         this.connection.onChatMessage(reader.readZTStringUTF8());
                 }
                 break;
-            default: return void this.fail(1003, "Unknown message type");
+            default:
+                return void this.fail(1003, "Unknown message type");
         }
     }
 
@@ -146,21 +147,22 @@ class ModernProtocol extends Protocol {
      * @param {Cell[]} del
      */
     onVisibleCellUpdate(add, upd, eat, del) {
-        let globalFlags = 0, hitSelfData, flags, item, i, l;
+        let globalFlags = 0,
+            hitSelfData, flags, item, i, l;
 
         if (this.spectateAreaPending != null) globalFlags |= 1;
-        if (this.worldBorderPending != null)  globalFlags |= 2;
-        if (this.serverInfoPending)           globalFlags |= 4;
+        if (this.worldBorderPending != null) globalFlags |= 2;
+        if (this.serverInfoPending) globalFlags |= 4;
         if (this.connection.hasPlayer && this.connection.player.hasWorld && this.worldStatsPending)
-                                              globalFlags |= 8;
-        if (this.chatPending.length > 0)      globalFlags |= 16;
-        if (this.leaderboardPending)          globalFlags |= 32;
-        if (this.clearCellsPending)           globalFlags |= 64,
+            globalFlags |= 8;
+        if (this.chatPending.length > 0) globalFlags |= 16;
+        if (this.leaderboardPending) globalFlags |= 32;
+        if (this.clearCellsPending) globalFlags |= 64,
             this.clearCellsPending = false;
-        if (add.length > 0)                   globalFlags |= 128;
-        if (upd.length > 0)                   globalFlags |= 256;
-        if (eat.length > 0)                   globalFlags |= 512;
-        if (del.length > 0)                   globalFlags |= 1024;
+        if (add.length > 0) globalFlags |= 128;
+        if (upd.length > 0) globalFlags |= 256;
+        if (eat.length > 0) globalFlags |= 512;
+        if (del.length > 0) globalFlags |= 1024;
 
         if (globalFlags === 0) return;
 

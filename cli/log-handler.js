@@ -95,15 +95,18 @@ function formatConsole(date, level, message) {
         case "PRINT":
         case "FILE":
             return message;
-        default: return `${dateTime(date)} [${level}] ${message}`;
+        default:
+            return `${dateTime(date)} [${level}] ${message}`;
     }
 }
+
 function formatFile(date, level, message) {
     switch (level) {
         case "PRINT":
         case "FILE":
             return `${dateTime(date)} ${message}`;
-        default: return `${dateTime(date)} [${level}] ${message}`;
+        default:
+            return `${dateTime(date)} [${level}] ${message}`;
     }
 }
 
@@ -115,15 +118,17 @@ function write(date, level, message) {
         if (!fprocessing && !synchronous) fprocess();
     }
 }
+
 function fprocess() {
     fconsuming = null;
     if (fqueue.length === 0)
-        return void (fprocessing = false);
+        return void(fprocessing = false);
     fconsuming = fqueue.join("");
     fstream.write(fconsuming, fprocess);
     fqueue.splice(0);
-    return void (fprocessing = false);
+    return void(fprocessing = false);
 }
+
 function fprocessSync() {
     fstream.destroy();
     fstream = null;

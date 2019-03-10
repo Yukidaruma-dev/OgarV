@@ -1,4 +1,3 @@
-
 class ProtocolStore {
     constructor() {
         /** @type {typeof Protocol[]} */

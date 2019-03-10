@@ -2,7 +2,7 @@ const Router = require("../primitives/Router");
 
 /**
  * @abstract
-*/
+ */
 class Bot extends Router {
     /**
      * @param {World} world

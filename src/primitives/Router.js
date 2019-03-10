@@ -58,11 +58,11 @@ class Router {
     }
 
     /** @virtual */
-    onWorldSet() { }
+    onWorldSet() {}
     /** @virtual */
-    onWorldReset() { }
+    onWorldReset() {}
     /** @param {PlayerCell} cell @virtual */
-    onNewOwnedCell(cell) { }
+    onNewOwnedCell(cell) {}
 
     /** @virtual */
     onSpawnRequest() {

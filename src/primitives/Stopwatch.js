@@ -1,5 +1,5 @@
 class Stopwatch {
-    constructor() { }
+    constructor() {}
     begin() {
         if (this._start) return;
         this._start = this._lap = process.hrtime();
