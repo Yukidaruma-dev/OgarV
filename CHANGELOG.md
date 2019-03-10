@@ -1,4 +1,5 @@
 #Changelog
+
 ####1.3.0 @ 2019-03-19:
 * Fixed some codes;
 * Changed some codes;
@@ -198,7 +199,7 @@
 * Have a single endpoint for changing the version;
 * Fix fatal typo on World.prototype.destroy;
 
-#####Nightly @ 2018-02-17:
+####Nightly @ 2018-02-17:
 * Implement Q-based minion controls;
 * Disconnect inactive connections;
 * Add two new CLI-only commands, reload and save;
@@ -233,7 +234,7 @@
 * Actually use the allPlayingRouters array;
 * Split the Player.prototype.update function into two - updateViewArea and updateVisibleCells;
 
-#####Nightly @ 2018-02-15:
+####Nightly @ 2018-02-15:
 * Implement logging to file;
 * Fix ServerHandle stopping logic;
 * Set setting mothercellCount's default to 0;
@@ -249,7 +250,7 @@
 * Implement autosplitting;
 
 -------------
-#####Nightly @ 2018-02-13:
+####Nightly @ 2018-02-13:
 * Call gamemode methods when necessary;
 * Define messages for the leaderboard;
 * Define the server stats type;
